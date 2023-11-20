@@ -19,6 +19,16 @@ h1 {
     margin-right: 100px;
 }
 
+figcaption h2 {
+    color: #901C1C;
+    text-align: center;
+    font-family: DM Sans;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
 figure {
     margin: 0;
 }
@@ -27,6 +37,10 @@ img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
+}
+
+a {
+    text-decoration: none;
 }
 
 .logo {
@@ -50,11 +64,48 @@ img {
 }
 
 .photographer_section figure h2 {
+    margin-top: 20px;
+    margin-bottom: 0;
     color: #D3573C;
     font-size: 36px;
 }
 
 .photographer_section figure img {
+    border-radius: 50%;
     height: 200px;
     width: 200px;
+    background-position: center;
+    object-fit: cover;
+}
+
+.photographer_section figure figcaption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photographer_section strong {
+    color: #901C1C;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.photographer_section p {
+    margin-top : 2px;
+    margin-bottom: 3px;
+    color: #000;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.photographer_section b {
+    color: #757575;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

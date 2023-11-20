@@ -22,6 +22,8 @@ function photographerTemplate(data) {
         p.textContent      = tagline;
         b.textContent      = `${price}€/jour`;
 
+        a.focus();
+
         a.appendChild(figure);
         figure.appendChild(img);
         figure.appendChild(figcaption);
