@@ -3,12 +3,59 @@
 }
 
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
 }
 
+.photograph-header img {
+    order : 3;
+    align-self: center;
+    padding-right: 45px;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    background-position: center;
+    object-fit: cover;
+}
+
+.photograph-header figcaption {
+    order: 1;
+    align-self: center;
+    padding-left: 45px;
+} 
+
+.photograph-header figcaption h2 {
+    margin-bottom: 8px;
+    color: #D3573C;
+    text-align: left;
+    font-size: 3.5em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.photograph-header figcaption strong {
+    color: #901C1C;
+    font-size: 1.4em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.photograph-header figcaption p {
+    color: #757575;
+    font-size: 1.1em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
 .contact_button {
+    order : 2;
+    align-self: center; 
     font-size: 20px;
     font-weight: bold;
     color: white;

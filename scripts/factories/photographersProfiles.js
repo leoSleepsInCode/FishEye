@@ -10,18 +10,18 @@ function profileHeader(data) {
         const section = document.querySelector('.photograph-header');
         const img = document.createElement('img');
         const figcaption = document.createElement('figcaption');
-        const h1 = document.createElement('h1');
+        const h2 = document.createElement('h2');
         const strong = document.createElement('strong');
         const pElt = document.createElement('p');
 
         img.src = PICTURE;
-        h1.textContent = name;
+        h2.textContent = name;
         strong.textContent = `${city}, ${country}`;
         pElt.textContent = tagline;
 
         section.appendChild(img);
         section.appendChild(figcaption);
-        figcaption.appendChild(h1);
+        figcaption.appendChild(h2);
         figcaption.appendChild(strong);
         figcaption.appendChild(pElt);
 
