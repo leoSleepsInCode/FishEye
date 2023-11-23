@@ -1,34 +1,56 @@
 "use strict";
 
-//Mettre le code JavaScript lié à la page photographer.html
+// async function getPhotographers() {
+//     const response = await fetch("data/photographers.json");
+//     const { photographers } = await response.json();
 
-function mediaHeaderTemplate(data) {
-    const {name, city, country, tagline} = data;
+//     return ({
+//         photographers: [...photographers, ...photographers, ...photographers]
+//     })
+// }
 
-    function getMediaInformationsDOM() {
-        
-    const picture = `assets/photographers/${portrait}`;
+// async function displayData(photographers) {
+//     const photographersSection = document.querySelector(".photograph-header");
 
-    const section = document.querySelector('photograph-header');
-    const img = document.createElement('img');
-    const figcaption = document.createElement('figcaption');
-    const h1 = document.createElement('h1');
-    const strong = document.createElement('strong');
-    const p = document.createElement('p');
+//     photographers.forEach((photographer) => {
+//         const photographerModel = profileHeader(photographer);
+//         const mediaInformations = photographerModel.getMediaInformationsDOM();
+//         photographersSection.appendChild(mediaInformations);
+//     });
+// }
 
-    img.src = picture;
-    h1.textContent = name;
-    strong.textContent = `${city}, ${country}`;
-    p.textContent = tagline;
+async function getPhotographerById(id) {
+    const response = await fetch("data/photographers.json");
+    const { photographers } = await response.json();
 
-    section.appendChild(img);
-    section.appendChild(figcaption);
-    figcaption.appendChild(h1);
-    figcaption.appendChild(strong);
-    figcaption.appendChild(p);
+    const photographer = photographers.find(p => p.id === parseInt(id, 10));
 
-    return section;
-    }
-  
-     return {getMediaInformationsDOM }
+    return photographer;
 }
+
+async function displayPhotographerData() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const photographerId = urlParams.get('id');
+
+    const photographer = await getPhotographerById(photographerId);
+
+    if (photographer) {
+        const photographerModel = profileHeader(photographer);
+        const mediaInformations = await photographerModel.getMediaInformationsDOM();
+
+        const photographersSection = document.querySelector(".photograph-header");
+        photographersSection.appendChild(mediaInformations);
+    } else {
+        console.error(`Photographer with id ${photographerId} not found.`);
+    }
+}
+
+// async function init() {
+//     // Récupère les datas des photographes
+//     const { photographers } = await getPhotographers();
+//     displayData(photographers);
+// }
+
+// init();
+
+displayPhotographerData();
