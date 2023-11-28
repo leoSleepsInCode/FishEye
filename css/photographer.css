@@ -13,7 +13,7 @@
 .photograph-header img {
     order : 3;
     align-self: center;
-    padding-right: 45px;
+    margin-right: 45px;
     border-radius: 50%;
     height: 200px;
     width: 200px;
@@ -67,6 +67,28 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.tri-par {
+    margin-left: 100px;
+}
+
+.photograph-medias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2%;
+}
+
+.photograph-medias figure {
+    padding : 10px;
+}
+
+.photograph-medias figure img {
+    width: 350px;
+    height: 300px; 
+    object-fit: cover;
+}
+
 
 .modal {
     border-radius: 5px;
