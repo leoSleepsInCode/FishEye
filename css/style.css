@@ -29,6 +29,11 @@ figcaption h2 {
     line-height: normal;
 }
 
+li {
+    list-style-type: none;
+    margin: none;
+}
+
 figure {
     margin: 0;
 }

@@ -33,31 +33,64 @@ function profileHeader(data) {
 
 
 function profileMedias(data) {
-    const { id, photographerId, title, image, likes } = data;
+    const { id, photographerId, title, image, video, likes } = data;
 
     const PICTURE = `assets/media/${photographerId}/${image}`;
+    const VIDEO = `assets/media/${photographerId}/${video}`;
 
     function getMainMediasDOM() {
 
-        const article = document.querySelector('.photograph-medias');
+        const ul = document.querySelector('.photograph-medias');
+        const li = document.createElement('li');
         const figure = document.createElement('figure');
         const img = document.createElement('img');
+        const video = document.createElement('video');
         const figcaption = document.createElement('figcaption');
         const titleElement = document.createElement('h2');
         const likesElement = document.createElement('b');
+        const hearts = document.createElement('i');
 
         img.src = PICTURE;
+        video.src = VIDEO;
         titleElement.textContent = title;
         likesElement.textContent = `${likes}`;
+        hearts.classList.add('fa-solid', 'fa-heart');
 
-        article.appendChild(figure);
+        ul.appendChild(li);
+        li.appendChild(figure);
         figure.appendChild(img);
+        // figure.appendChild(video);
         figure.appendChild(figcaption);
         figcaption.appendChild(titleElement);
         figcaption.appendChild(likesElement);
+        likesElement.appendChild(hearts);
 
-        return figure;
+        return li;
     }
 
-    return { id, photographerId, title, PICTURE, likes, getMainMediasDOM };
+    return { id, photographerId, title, PICTURE, VIDEO, likes, getMainMediasDOM };
+}
+
+function priceBox(data) {
+    const { price, likes } = data;
+
+    function getPriceBoxDOM() {
+        const likesBox = document.createElement('div');
+        const likesElement = document.createElement('b');
+        const heartsElement = document.createElement('i');
+        const priceElement = document.createElement('p');
+
+        likesElement.textContent = `${likes}`;
+        heartsElement.classList.add('fa-solid', 'fa-heart');
+        priceElement.textContent = `${price}€ / jour`;
+        likesBox.classList.add('pricesBox');
+
+        likesBox.appendChild(likesElement);
+        likesElement.appendChild(heartsElement);
+        likesBox.appendChild(priceElement);
+
+        return likesBox;
+    }
+
+    return { getPriceBoxDOM };
 }
