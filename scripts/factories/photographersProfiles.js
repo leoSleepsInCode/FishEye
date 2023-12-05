@@ -43,23 +43,30 @@ function profileMedias(data) {
         const ul = document.querySelector('.photograph-medias');
         const li = document.createElement('li');
         const figure = document.createElement('figure');
-        const img = document.createElement('img');
-        const video = document.createElement('video');
         const figcaption = document.createElement('figcaption');
         const titleElement = document.createElement('h2');
         const likesElement = document.createElement('b');
         const hearts = document.createElement('i');
 
-        img.src = PICTURE;
-        video.src = VIDEO;
         titleElement.textContent = title;
         likesElement.textContent = `${likes}`;
         hearts.classList.add('fa-solid', 'fa-heart');
+        
+        if (image) {
+            const img = document.createElement('img');
+            img.src = PICTURE;
+            figure.appendChild(img);
+        }
+
+        if (video) {
+            const video = document.createElement('video');
+            video.src = VIDEO;
+            video.setAttribute('controls', '');
+            figure.appendChild(video);
+        }
 
         ul.appendChild(li);
         li.appendChild(figure);
-        figure.appendChild(img);
-        // figure.appendChild(video);
         figure.appendChild(figcaption);
         figcaption.appendChild(titleElement);
         figcaption.appendChild(likesElement);
