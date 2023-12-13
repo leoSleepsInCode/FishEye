@@ -1,5 +1,18 @@
 "use strict";
 
+/**
+ * Generates a photographers gallery.
+ *
+ * @param {object} data - The data object containing information about the photographer.
+ * @param {string} data.id - The ID of the photographer.
+ * @param {string} data.name - The name of the photographer.
+ * @param {string} data.city - The city where the photographer is located.
+ * @param {string} data.country - The country where the photographer is located.
+ * @param {string} data.tagline - The tagline of the photographer.
+ * @param {string} data.price - The price of the photographer's services.
+ * @param {string} data.portrait - The filename of the photographer's portrait image.
+ * @return {object} - An object containing the photographer's name, the filename of the photographer's portrait image, and a function to get the user card DOM element.
+ */
 function photographersGallery(data) {
     const { id, name, city, country, tagline, price, portrait } = data;
 

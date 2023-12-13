@@ -1,5 +1,10 @@
 "use strict";
 
+/**
+ * Retrieves the media from the "photographers.json" file.
+ *
+ * @return {Array} An array of media objects.
+ */
 async function getMedias() {
     const response = await fetch("data/photographers.json");
     const { media} = await response.json();
@@ -7,6 +12,12 @@ async function getMedias() {
     return media ;
 }
 
+/**
+ * Display the photographer's medias on the webpage.
+ *
+ * @param {Array} medias - An array of media objects.
+ * @return {void} This function does not return a value.
+ */
 async function displayPhotographerMedias(medias) {
     const photographersWorksSection = document.querySelector(".photograph-medias");
 
@@ -23,6 +34,11 @@ async function displayPhotographerMedias(medias) {
     });
 }
 
+/**
+ * Initializes the function.
+ *
+ * @return {Promise<void>} - A Promise that resolves with no value.
+ */
 async function init() {
     const media = await getMedias();
     displayPhotographerMedias(media);
@@ -30,6 +46,11 @@ async function init() {
 
 init();
 
+/**
+ * Asynchronously displays prices and likes.
+ *
+ * @return {Promise<void>} Promise that resolves when the function is complete.
+ */
 async function displayPricesAndLikes() {
   const likesBox = document.querySelector(".likes-box");
 
@@ -58,3 +79,41 @@ async function displayPricesAndLikes() {
 
 
 displayPricesAndLikes();
+
+async function addLikes() {
+  console.log('addLikes() called');
+
+  const likeButtons = document.querySelectorAll('.fa-heart');
+  console.log('likeButtons:', likeButtons);
+
+  likeButtons.forEach((likeButton) => {
+    likeButton.addEventListener('click', async () => {
+      console.log('Button clicked');
+
+      let likesElement = likeButton.parentElement.querySelector('.likes');
+      let numberOfLikes = parseInt(likesElement.textContent, 10);
+      let isLiked = likeButton.classList.contains('liked');
+
+      if (!likeButton.disabled) {
+        likeButton.disabled = true;
+
+        if (!isLiked) {
+          numberOfLikes++;
+          console.log('Incremented numberOfLikes:', numberOfLikes);
+          likeButton.classList.add('liked');
+        } else {
+          numberOfLikes--;
+          console.log('Decremented numberOfLikes:', numberOfLikes);
+          likeButton.classList.remove('liked');
+        }
+
+        likesElement.textContent = numberOfLikes;
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        likeButton.disabled = false;
+      }
+    });
+  });
+}
+

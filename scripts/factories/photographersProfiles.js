@@ -1,5 +1,16 @@
 "use strict";
 
+/**
+ * Generates the profile header for a photographer.
+ *
+ * @param {Object} data - The data object containing information about the photographer.
+ * @param {string} data.name - The name of the photographer.
+ * @param {string} data.city - The city of the photographer.
+ * @param {string} data.country - The country of the photographer.
+ * @param {string} data.tagline - The tagline of the photographer.
+ * @param {string} data.portrait - The filename of the photographer's portrait image.
+ * @return {Object} - An object containing the name, picture URL, and the DOM element for the header.
+ */
 function profileHeader(data) {
     const {name, city, country, tagline, portrait} = data;
 
@@ -32,6 +43,18 @@ function profileHeader(data) {
 }
 
 
+/**
+ * Generates the function comment for the given function body.
+ *
+ * @param {object} data - The data object containing information about the media.
+ * @param {string} data.id - The ID of the media.
+ * @param {string} data.photographerId - The ID of the photographer.
+ * @param {string} data.title - The title of the media.
+ * @param {string} data.image - The image filename.
+ * @param {string} data.video - The video filename.
+ * @param {number} data.likes - The number of likes for the media.
+ * @return {object} - An object containing the ID, photographer ID, title, PICTURE, VIDEO, likes, and getMainMediasDOM function.
+ */
 function profileMedias(data) {
     const { id, photographerId, title, image, video, likes } = data;
 
@@ -44,6 +67,7 @@ function profileMedias(data) {
         const li = document.createElement('li');
         const figure = document.createElement('figure');
         const figcaption = document.createElement('figcaption');
+        const pElement = document.createElement('p');
         const titleElement = document.createElement('h2');
         const likesElement = document.createElement('b');
         const hearts = document.createElement('i');
@@ -51,6 +75,7 @@ function profileMedias(data) {
         titleElement.textContent = title;
         likesElement.textContent = `${likes}`;
         hearts.classList.add('fa-solid', 'fa-heart');
+        likesElement.classList.add('likes');
         
         if (image) {
             const img = document.createElement('img');
@@ -69,15 +94,29 @@ function profileMedias(data) {
         li.appendChild(figure);
         figure.appendChild(figcaption);
         figcaption.appendChild(titleElement);
-        figcaption.appendChild(likesElement);
-        likesElement.appendChild(hearts);
+        figcaption.appendChild(pElement);
+        pElement.appendChild(likesElement);
+        pElement.appendChild(hearts);
+
+        hearts.addEventListener('click', () => {
+            addLikes();
+        });
 
         return li;
     }
 
     return { id, photographerId, title, PICTURE, VIDEO, likes, getMainMediasDOM };
+
 }
 
+
+
+/**
+ * Generates the DOM element for the price box.
+ *
+ * @param {object} data - The data object containing the price and likes.
+ * @returns {object} The DOM element representing the price box.
+ */
 function priceBox(data) {
     const { price, likes } = data;
 
