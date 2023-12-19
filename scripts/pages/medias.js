@@ -44,7 +44,6 @@ async function init() {
     displayPhotographerMedias(media);
 }
 
-init();
 
 /**
  * Asynchronously displays prices and likes.
@@ -77,9 +76,11 @@ async function displayPricesAndLikes() {
   }
 }
 
-
-displayPricesAndLikes();
-
+/**
+ * Adds event listeners to like buttons and updates the number of likes.
+ *
+ * @return {Promise} - A promise that resolves when the function completes.
+ */
 async function addLikes() {
   console.log('addLikes() called');
 
@@ -117,3 +118,6 @@ async function addLikes() {
   });
 }
 
+init();
+
+displayPricesAndLikes();

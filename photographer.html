@@ -15,7 +15,7 @@
     </header>
     <main id="main">
       <section class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="open-modal contact_button" onclick="displayModal()">Contactez-moi</button>
       </section>
       <div class="tri-par">
         <p>Trier par</p>
@@ -25,11 +25,11 @@
       <div class="likes-box">
       </div>
     </main>
-    <div id="contact_modal">
+    <div class="modal-overlay" id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt ="close modal"/>
+          <img src="assets/close.svg" onclick="closeModal()" class="close-modal" alt ="close modal"/>
         </header>
 				<form>
 					<div>
@@ -43,6 +43,6 @@
     <script src="scripts/factories/photographersProfiles.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/pages/medias.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/modal.js"></script>
   </body>
 </html>

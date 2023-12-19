@@ -98,9 +98,9 @@ function profileMedias(data) {
         pElement.appendChild(likesElement);
         pElement.appendChild(hearts);
 
-        hearts.addEventListener('click', () => {
-            addLikes();
-        });
+        
+        addLikes();
+        
 
         return li;
     }
