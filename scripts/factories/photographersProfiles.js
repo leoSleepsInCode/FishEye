@@ -129,7 +129,7 @@ function priceBox(data) {
         likesElement.textContent = `${likes}`;
         heartsElement.classList.add('fa-solid', 'fa-heart');
         priceElement.textContent = `${price}€ / jour`;
-        likesBox.classList.add('pricesBox');
+        likesBox.classList.add('prices-box');
 
         likesBox.appendChild(likesElement);
         likesElement.appendChild(heartsElement);
@@ -140,3 +140,4 @@ function priceBox(data) {
 
     return { getPriceBoxDOM };
 }
+
