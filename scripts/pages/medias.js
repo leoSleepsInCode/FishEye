@@ -1,5 +1,7 @@
 "use strict";
 
+
+const displayBox = document.querySelector('.display-box');
 /**
  * Retrieves the media from the "photographers.json" file.
  *
@@ -46,7 +48,7 @@ async function init() {
 
 
 async function getMatchingPhotographer() {
-  try {
+
     const urlParams = new URLSearchParams(window.location.search);
     const matchingPhotographerId = parseInt(urlParams.get('id'), 10);
 
@@ -62,45 +64,13 @@ async function getMatchingPhotographer() {
     } else {
       throw new Error('Matching photographer not found');
     }
-  } catch (error) {
-    console.error('Error fetching photographer:', error);
-  }
 }
 
-
-async function displayPrices() {
-  try {
-    const matchingPhotographer = await getMatchingPhotographer();
-    console.log('Photographer (for prices):', matchingPhotographer); // Log for debugging
-
-    let priceBoxElement = document.querySelector(".price-box");
-    if (!priceBoxElement) {
-      // Attendre 100 millisecondes et réessayer
-      await new Promise(resolve => setTimeout(resolve, 100));
-      priceBoxElement = document.querySelector(".price-box");
-    }
-
-    if (matchingPhotographer && matchingPhotographer.price !== undefined && priceBoxElement) {
-      const priceBoxObj = priceBox({ price: matchingPhotographer.price });
-      const priceBoxDOM = priceBoxObj.getPriceBoxDOM();
-
-      const priceElement = document.createElement("div");
-      priceElement.textContent = `Price: ${matchingPhotographer.price}`;
-
-      priceBoxDOM.appendChild(priceElement);
-
-      priceBoxElement.appendChild(priceBoxDOM);
-    }
-  } catch (error) {
-    console.error('Error displaying prices:', error);
-  }
-}
-
-// Function to display the likes
 async function displayLikes() {
+  console.log('displayLikes() called');
   try {
+    
     const matchingPhotographer = await getMatchingPhotographer();
-    console.log('Photographer (for likes):', matchingPhotographer); // Log for debugging
 
     if (matchingPhotographer) {
       const response = await fetch('data/photographers.json');
@@ -111,23 +81,37 @@ async function displayLikes() {
         .filter(mediaObj => mediaObj.photographerId === matchingPhotographer.id)
         .reduce((totalLikes, mediaObj) => totalLikes + mediaObj.likes, 0);
 
-      const priceBoxObj = priceBox({ likes });
-      const priceBoxDOM = priceBoxObj.getPriceBoxDOM();
-      document.querySelector(".likes-box").appendChild(priceBoxDOM);
+      const likesBoxObj = getLikesDOM( likes );
+      displayBox.appendChild(likesBoxObj);
     }
   } catch (error) {
     console.error('Error displaying likes:', error);
   }
 }
 
+async function displayPrices() {
+  console.log('displayPrices() called');
+  try {
+    const matchingPhotographer = await getMatchingPhotographer();
 
-/**
- * Manages the likes for a given like button.
- *
- * @param {Element} likeButton - The like button element.
- * @return {Promise} - A promise that resolves when the likes have been updated.
- */
-async function likesManagement(likeButton) {
+    if (matchingPhotographer) {
+      const response = await fetch('data/photographers.json');
+      const data = await response.json();
+      const photographers = data.photographers;
+
+      const price = photographers
+        .filter(photographer => photographer.id === matchingPhotographer.id)
+        .reduce((totalPrice, photographer) => totalPrice + photographer.price, 0);
+        
+      const priceBoxObj = getPriceDOM( price );
+      displayBox.appendChild(priceBoxObj);
+    }
+  } catch (error) {
+    console.error('Error displaying prices:', error);
+  }
+}
+
+async function controlLikesPhotos(likeButton) {
   let likesElement = likeButton.parentElement.querySelector('.likes');
   let numberOfLikes = parseInt(likesElement.textContent, 10);
   let isLiked = likeButton.classList.contains('liked');
@@ -145,8 +129,6 @@ async function likesManagement(likeButton) {
 
     likesElement.textContent = numberOfLikes;
 
-    await displayLikes();
-
     await new Promise(resolve => setTimeout(resolve, 100));
 
     likeButton.disabled = false;
@@ -154,25 +136,22 @@ async function likesManagement(likeButton) {
 }
 
 
-/**
- * Adds event listeners to like buttons and calls the likesManagement function when a like button is clicked.
- *
- */
-async function addLikes() {
-  console.log('addLikes() called');
+
+async function clickLikesPhotos() {
+  // console.log('addLikes() called');
 
   const likeButtons = document.querySelectorAll('.fa-heart');
-  console.log('likeButtons:', likeButtons);
+  // console.log('likeButtons:', likeButtons);
 
   likeButtons.forEach((likeButton) => {
-    likeButton.addEventListener('click', () => likesManagement(likeButton));
-    console.log('likeButton:', likeButton);
+    likeButton.addEventListener('click', () => controlLikesPhotos(likeButton));
+    // console.log('likeButton:', likeButton);
   });
 }
 
 
 init();
 
-displayPrices();
-
 displayLikes();
+
+displayPrices();

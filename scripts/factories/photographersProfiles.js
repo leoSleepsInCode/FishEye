@@ -1,5 +1,7 @@
 "use strict";
 
+const contentBox = document.createElement('div');
+contentBox.classList.add('display-content');
 /**
  * Generates the profile header for a photographer.
  *
@@ -99,7 +101,7 @@ function profileMedias(data) {
         pElement.appendChild(hearts);
 
         
-        addLikes();
+        clickLikesPhotos();
         
 
         return li;
@@ -108,36 +110,29 @@ function profileMedias(data) {
     return { id, photographerId, title, PICTURE, VIDEO, likes, getMainMediasDOM };
 
 }
+function getLikesDOM( likes ) {
+    
+    const likesElement = document.createElement('b');
+    const heartsElement = document.createElement('i');
+    
+    likesElement.textContent = `${likes}`;
+    heartsElement.classList.add('fa-solid', 'fa-heart');
 
+    contentBox.appendChild(likesElement);
+    likesElement.appendChild(heartsElement);
 
-
-/**
- * Generates the DOM element for the price box.
- *
- * @param {object} data - The data object containing the price and likes.
- * @returns {object} The DOM element representing the price box.
- */
-function priceBox(data) {
-    const { price, likes } = data;
-
-    function getPriceBoxDOM() {
-        const likesBox = document.createElement('div');
-        const likesElement = document.createElement('b');
-        const heartsElement = document.createElement('i');
-        const priceElement = document.createElement('p');
-
-        likesElement.textContent = `${likes}`;
-        heartsElement.classList.add('fa-solid', 'fa-heart');
-        priceElement.textContent = `${price}€ / jour`;
-        likesBox.classList.add('prices-box');
-
-        likesBox.appendChild(likesElement);
-        likesElement.appendChild(heartsElement);
-        likesBox.appendChild(priceElement);
-
-        return likesBox;
-    }
-
-    return { getPriceBoxDOM };
+    return contentBox;
 }
+
+function getPriceDOM( price ) {
+    
+    const priceElement = document.createElement('p');
+    
+    priceElement.textContent = `${price}€ / jour`;
+    
+    contentBox.appendChild(priceElement);
+    
+    return contentBox;
+}
+
 

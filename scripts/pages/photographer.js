@@ -28,10 +28,8 @@ async function displayPhotographerData() {
 
     if (photographer) {
         const photographerModel = profileHeader(photographer);
-        const mediaInformations = await photographerModel.getHeaderMediasDOM();
-
-        const photographersSection = document.querySelector(".photograph-header");
-        photographersSection.appendChild(mediaInformations);
+        await photographerModel.getHeaderMediasDOM();
+        
     } else {
         console.error(`Photographer with id ${photographerId} not found.`);
     }

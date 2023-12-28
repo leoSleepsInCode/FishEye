@@ -151,7 +151,7 @@ a {
     cursor: pointer;
 }
 
-.likes-box {
+.display-box {
     position : fixed;
     bottom : 0;
     right : 40px;
@@ -161,7 +161,7 @@ a {
     background-color: #DB8876;
 }
 
-.prices-box {
+.display-content {
     display: flex;
     padding-left: 20px;
     padding-right: 20px;
@@ -170,7 +170,7 @@ a {
     font-size: 22px;
 }
 
-.prices-box i {
+.display-content i {
     padding-left: 5px;
 }
 
