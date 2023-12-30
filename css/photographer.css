@@ -170,6 +170,14 @@ a {
     font-size: 22px;
 }
 
+.display-content b {
+    order :1;
+}
+
+.display-content p {
+    order : 2;
+}
+
 .display-content i {
     padding-left: 5px;
 }

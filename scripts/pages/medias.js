@@ -46,7 +46,6 @@ async function init() {
     displayPhotographerMedias(media);
 }
 
-
 async function getMatchingPhotographer() {
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -69,7 +68,7 @@ async function getMatchingPhotographer() {
 async function displayLikes() {
   console.log('displayLikes() called');
   try {
-    
+
     const matchingPhotographer = await getMatchingPhotographer();
 
     if (matchingPhotographer) {
@@ -122,9 +121,11 @@ async function controlLikesPhotos(likeButton) {
     if (!isLiked) {
       numberOfLikes++;
       likeButton.classList.add('liked');
+      updateLikesDisplay(1);
     } else {
       numberOfLikes--;
       likeButton.classList.remove('liked');
+      updateLikesDisplay(-1);
     }
 
     likesElement.textContent = numberOfLikes;
@@ -134,8 +135,6 @@ async function controlLikesPhotos(likeButton) {
     likeButton.disabled = false;
   }
 }
-
-
 
 async function clickLikesPhotos() {
   // console.log('addLikes() called');
@@ -149,6 +148,14 @@ async function clickLikesPhotos() {
   });
 }
 
+async function updateLikesDisplay(delta) {
+  const likesNumber = document.querySelector('.likes-number');
+  let totalLikes = parseInt(likesNumber.textContent, 10); // Récupère la valeur actuelle
+
+  totalLikes += delta; // Ajuste le total basé sur le delta
+
+  likesNumber.textContent = totalLikes; // Met à jour l'affichage
+}
 
 init();
 

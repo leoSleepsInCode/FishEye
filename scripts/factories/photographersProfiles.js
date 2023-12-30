@@ -113,12 +113,16 @@ function profileMedias(data) {
 function getLikesDOM( likes ) {
     
     const likesElement = document.createElement('b');
+    const likesNumber = document.createElement('span');
     const heartsElement = document.createElement('i');
     
-    likesElement.textContent = `${likes}`;
+    likesNumber.textContent = `${likes}`;
+    likesElement.classList.add('likes');
+    likesNumber.classList.add('likes-number');
     heartsElement.classList.add('fa-solid', 'fa-heart');
 
     contentBox.appendChild(likesElement);
+    likesElement.appendChild(likesNumber);
     likesElement.appendChild(heartsElement);
 
     return contentBox;
