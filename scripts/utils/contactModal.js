@@ -1,7 +1,7 @@
 "use strict";
 
-const openButton = document.querySelector(".open-modal");
-const closeButton = document.querySelector(".close-modal");
+// const openButton = document.querySelector(".open-modal");
+// const closeButton = document.querySelector(".close-modal");
 
 function displayContactModal() {
     console.log("displayModal() called");
@@ -15,17 +15,17 @@ function closeContactModal() {
     modal.style.display = "none";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOMContentLoaded() called");
+// document.addEventListener("DOMContentLoaded", function () {
+//     console.log("DOMContentLoaded() called");
 
-    if (openButton) {
-        openButton.addEventListener("click", displayContactModal);
-    }
+//     if (openButton) {
+//         openButton.addEventListener("click", displayContactModal);
+//     }
 
-    if (closeButton) {
-        closeButton.addEventListener("click", closeContactModal);
-    }
-});
+//     if (closeButton) {
+//         closeButton.addEventListener("click", closeContactModal);
+//     }
+// });
 
 async function displayNames() {
 

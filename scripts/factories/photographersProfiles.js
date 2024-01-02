@@ -83,6 +83,8 @@ function profileMedias(data) {
             const img = document.createElement('img');
             img.src = PICTURE;
             figure.appendChild(img);
+            img.classList.add('open-lightbox');
+            img.setAttribute('onclick', 'displayLightbox()');
         }
 
         if (video) {
@@ -90,6 +92,7 @@ function profileMedias(data) {
             video.src = VIDEO;
             video.setAttribute('controls', '');
             figure.appendChild(video);
+            video.setAttribute('onclick', 'displayLightbox()');
         }
 
         ul.appendChild(li);
