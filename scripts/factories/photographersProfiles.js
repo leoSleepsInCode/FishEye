@@ -2,6 +2,7 @@
 
 const contentBox = document.createElement('div');
 contentBox.classList.add('display-content');
+
 /**
  * Generates the profile header for a photographer.
  *
@@ -84,7 +85,11 @@ function profileMedias(data) {
             img.src = PICTURE;
             figure.appendChild(img);
             img.classList.add('open-lightbox');
-            img.setAttribute('onclick', 'displayLightbox()');
+            img.addEventListener('click', function () {
+                displayLightbox(PICTURE, 'image', title);
+            });
+            img.setAttribute('alt', title);
+            addMediaItem(PICTURE, 'image', title);
         }
 
         if (video) {
@@ -92,7 +97,10 @@ function profileMedias(data) {
             video.src = VIDEO;
             video.setAttribute('controls', '');
             figure.appendChild(video);
-            video.setAttribute('onclick', 'displayLightbox()');
+            video.addEventListener('click', function () {
+                displayLightbox(VIDEO, 'video', title);
+            });
+            addMediaItem(VIDEO, 'video', title);
         }
 
         ul.appendChild(li);
@@ -102,7 +110,6 @@ function profileMedias(data) {
         figcaption.appendChild(pElement);
         pElement.appendChild(likesElement);
         pElement.appendChild(hearts);
-
         
         clickLikesPhotos();
         
@@ -113,6 +120,12 @@ function profileMedias(data) {
     return { id, photographerId, title, PICTURE, VIDEO, likes, getMainMediasDOM };
 
 }
+/**
+ * Creates and appends a DOM element representing the likes of a post.
+ *
+ * @param {number} likes - The number of likes.
+ * @return {HTMLElement} The DOM element representing the likes.
+ */
 function getLikesDOM( likes ) {
     
     const likesElement = document.createElement('b');
@@ -131,6 +144,12 @@ function getLikesDOM( likes ) {
     return contentBox;
 }
 
+/**
+ * Creates a DOM element to display a price and adds it to the content box.
+ *
+ * @param {number} price - The price to be displayed.
+ * @return {Element} The content box element with the added price element.
+ */
 function getPriceDOM( price ) {
     
     const priceElement = document.createElement('p');

@@ -289,7 +289,6 @@ textarea {
     justify-content: space-between;
     margin: auto;
     width: 50%;
-    /* max-width: 900px; */
     height : 600px;
     padding: 35px;
     border-radius: 5px;
@@ -323,4 +322,10 @@ textarea {
 .fa-xmark {
     color: #901C1C;
     cursor: pointer;
+}
+
+.lightbox-media {
+    width: 100%;
+    height: 550px;
+    object-fit: contain;
 }
