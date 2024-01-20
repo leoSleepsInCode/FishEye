@@ -26,6 +26,7 @@ function displayLightbox(source, type, title) {
     if (type === 'image') {
         mediaToShow = document.createElement('img');
         mediaToShow.src = source;
+        mediaToShow.setAttribute('alt', 'Version agrandie de la photo ' + title );
     } else if (type === 'video') {
         mediaToShow = document.createElement('video');
         mediaToShow.src = source;

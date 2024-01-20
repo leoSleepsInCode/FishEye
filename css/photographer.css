@@ -50,7 +50,7 @@ a {
     padding-left: 45px;
 } 
 
-.photograph-header figcaption h2 {
+.photograph-header figcaption h1 {
     margin-bottom: 8px;
     color: #D3573C;
     text-align: left;
@@ -89,6 +89,10 @@ a {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.open-modal:hover {
+    background-color: #DB8876;
 }
 
 .photograph-medias {
@@ -308,6 +312,7 @@ textarea {
 }
 
 .lightbox-overlay {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -315,7 +320,6 @@ textarea {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.5);
     z-index: 1000;
-    display: none;
 }
 
 .lightbox-content {

@@ -30,6 +30,7 @@ function photographersGallery(data) {
 
         a.href             = `photographer.html?id=${id}`;
         img.src            = PICTURE;
+        img.alt            = name;
         h2.textContent     = name;
         strong.textContent = `${city}, ${country}`;
         pElt.textContent   = tagline;

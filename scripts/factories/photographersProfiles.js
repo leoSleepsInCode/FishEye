@@ -24,18 +24,19 @@ function profileHeader(data) {
         const section = document.querySelector( '.photograph-header' );
         const img = document.createElement( 'img' );
         const figcaption = document.createElement( 'figcaption' );
-        const h2 = document.createElement( 'h2' );
+        const h1 = document.createElement( 'h1' );
         const strong = document.createElement( 'strong' );
         const pElt = document.createElement( 'p' );
 
         img.src = PICTURE;
-        h2.textContent = name;
+        img.alt = 'Photo de profil de ' + name;
+        h1.textContent = name;
         strong.textContent = `${city}, ${country}`;
         pElt.textContent = tagline;
 
         section.appendChild(img);
         section.appendChild(figcaption);
-        figcaption.appendChild(h2);
+        figcaption.appendChild(h1);
         figcaption.appendChild(strong);
         figcaption.appendChild(pElt);
 
@@ -78,6 +79,7 @@ function profileMedias(data) {
         titleElement.textContent = title;
         likesElement.textContent = `${likes}`;
         hearts.classList.add('fa-solid', 'fa-heart');
+        hearts.setAttribute('aria-label', 'likes');
         likesElement.classList.add('likes');
         
         if (image) {
@@ -88,7 +90,7 @@ function profileMedias(data) {
             img.addEventListener('click', function () {
                 displayLightbox(PICTURE, 'image', title);
             });
-            img.setAttribute('alt', title);
+            img.setAttribute('alt', 'Photo ' + title + ', cliquez pour agrandir' );
             addMediaItem(PICTURE, 'image', title);
         }
 

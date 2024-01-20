@@ -11,11 +11,13 @@
   </head>
   <body class="photographer">
     <header>
-      <img src="assets/logo.png" class="logo-2" alt ="fisheye logo"/>
+      <a href="index.html">
+        <img src="assets/logo.png" class="logo-2" alt ="Fisheye Home page"/>
+      </a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false" role="main">
       <section class="photograph-header">
-        <button class="open-modal contact_button" onclick="displayContactModal()">Contactez-moi</button>
+        <button class="open-modal contact_button" onclick="displayContactModal()" aria-label="Formulaire de contact">Contactez-moi</button>
       </section>
       <div class="tri-par">
         <p>Trier par</p>
@@ -25,7 +27,7 @@
       <div class="display-box">
       </div>
     </main>
-    <div class="modal-overlay" id="contact_modal">
+    <div class="modal-overlay" id="contact_modal" aria-hidden="true" role="dialog">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
@@ -45,17 +47,17 @@
             <label for="message">Votre message</label>
             <textarea id="message" name="message" required></textarea>
           </div>
-          <button class="contact_button send-button">Envoyer</button>
+          <button class="contact_button send-button" aria-label="Cliquez pour envoyer">Envoyer</button>
         </form>
 			</div>
 		</div>
-    <div class="lightbox-overlay" id="lightbox-container">
+    <div class="lightbox-overlay" id="lightbox-container" aria-hidden="true" role="img">
       <div class="lightbox">
-        <i class="fa-solid fa-chevron-left"></i>
-        <i class="fa-solid fa-xmark close-lightbox" onclick="closeLightbox()" alt="close lightbox"></i>
+        <i class="fa-solid fa-chevron-left" aria-label="image précédente"></i>
+        <i class="fa-solid fa-xmark close-lightbox" onclick="closeLightbox()" alt="fermer la lightbox"></i>
         <div class="lightbox-content">
         </div>
-        <i class="fa-solid fa-chevron-right"></i>
+        <i class="fa-solid fa-chevron-right" aria-label="image suivante"></i>
       </div>
     </div>
     <script src="scripts/factories/photographersProfiles.js"></script>
