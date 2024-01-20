@@ -168,14 +168,17 @@ a {
     justify-content: space-between;
     align-items: center;
     font-size: 22px;
+    font-weight: 500;
 }
 
 .display-content b {
     order :1;
+    font-weight: 500;
 }
 
 .display-content p {
     order : 2;
+    font-weight: 500;
 }
 
 .display-content i {
@@ -287,10 +290,10 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin: auto;
-    width: 50%;
-    height : 600px;
-    padding: 35px;
+    /* margin: auto; */
+    width: 80%;
+    height : 73vh;
+    padding : 40px 20px 20px 20px;
     border-radius: 5px;
     transform: translate(-50%, -50%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -300,10 +303,8 @@ textarea {
 
 .lightbox .close-lightbox {
     top : 20px;
-    right : 20px;
-    font-size: 30px;
+    right : 35px;
     position: absolute;
-    cursor: pointer;
 }
 
 .lightbox-overlay {
@@ -317,15 +318,44 @@ textarea {
     display: none;
 }
 
+.lightbox-content {
+    padding-left : 50px;
+    padding-right : 50px;
+}
+
 .fa-chevron-left,
 .fa-chevron-right,
 .fa-xmark {
     color: #901C1C;
     cursor: pointer;
+    font-size: 50px;
+}
+
+.fa-chevron-left {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+}
+
+.fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    right: 40px;
 }
 
 .lightbox-media {
     width: 100%;
-    height: 550px;
+    height: 70vh ;
     object-fit: contain;
+}
+
+.lightbox-title {
+    margin: 0;
+    padding: 0;
+    color: #901C1C;
+    font-family: DM Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    /* line-height: normal; */
 }

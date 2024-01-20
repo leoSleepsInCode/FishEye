@@ -15,18 +15,6 @@ function closeContactModal() {
     modal.style.display = "none";
 }
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     console.log("DOMContentLoaded() called");
-
-//     if (openButton) {
-//         openButton.addEventListener("click", displayContactModal);
-//     }
-
-//     if (closeButton) {
-//         closeButton.addEventListener("click", closeContactModal);
-//     }
-// });
-
 async function displayNames() {
 
     const urlParams = new URLSearchParams(window.location.search);
