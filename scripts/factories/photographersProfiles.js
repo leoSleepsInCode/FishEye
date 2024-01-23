@@ -79,6 +79,7 @@ function profileMedias(data) {
         titleElement.textContent = title;
         likesElement.textContent = `${likes}`;
         hearts.classList.add('fa-solid', 'fa-heart');
+        hearts.setAttribute('tabindex', '0');
         hearts.setAttribute('aria-label', 'likes');
         likesElement.classList.add('likes');
         
@@ -87,6 +88,7 @@ function profileMedias(data) {
             img.src = PICTURE;
             figure.appendChild(img);
             img.classList.add('open-lightbox');
+            img.setAttribute('tabindex', '0');
             img.addEventListener('click', function () {
                 displayLightbox(PICTURE, 'image', title);
             });

@@ -101,6 +101,7 @@ a {
     flex-wrap: wrap;
     padding : 0;
     gap: 25px 70px;
+    cursor: pointer;
 }
 
 .photograph-medias li {
