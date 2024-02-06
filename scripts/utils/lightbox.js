@@ -27,6 +27,7 @@ function displayLightbox(source, type, title) {
         mediaToShow = document.createElement('img');
         mediaToShow.src = source;
         mediaToShow.setAttribute('alt', 'Version agrandie de la photo ' + title );
+        mediaToShow.setAttribute('tabindex', '1');
     } else if (type === 'video') {
         mediaToShow = document.createElement('video');
         mediaToShow.src = source;
@@ -111,5 +112,24 @@ function showPreviousMedia() {
     }
 }
 
-leftChevron.addEventListener('click', showPreviousMedia);
-rightChevron.addEventListener('click', showNextMedia);
+
+function setChevrons () {
+    leftChevron.addEventListener('click', showPreviousMedia);
+    leftChevron.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            showPreviousMedia();
+        }
+    })
+
+    rightChevron.addEventListener('click', showNextMedia);
+    rightChevron.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            showNextMedia();
+        }
+    })
+
+    leftChevron.setAttribute('tabindex', '0');
+    rightChevron.setAttribute('tabindex', '0');
+}
+
+setChevrons();

@@ -82,7 +82,7 @@ function profileMedias(data) {
         hearts.setAttribute('tabindex', '0');
         hearts.setAttribute('aria-label', 'likes');
         likesElement.classList.add('likes');
-        
+
         if (image) {
             const img = document.createElement('img');
             img.src = PICTURE;
@@ -92,6 +92,11 @@ function profileMedias(data) {
             img.addEventListener('click', function () {
                 displayLightbox(PICTURE, 'image', title);
             });
+            img.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    displayLightbox(PICTURE, 'image', title);
+                }
+            })
             img.setAttribute('alt', 'Photo ' + title + ', cliquez pour agrandir' );
             addMediaItem(PICTURE, 'image', title);
         }

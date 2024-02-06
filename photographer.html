@@ -15,12 +15,40 @@
         <img src="assets/logo.png" class="logo-2" alt ="Fisheye Home page"/>
       </a>
     </header>
+    <div class="lightbox-overlay" id="lightbox-container" aria-hidden="true" role="img">
+      <div class="lightbox">
+        <i class="fa-solid fa-chevron-left" aria-label="image précédente"></i>
+        <i class="fa-solid fa-xmark close-lightbox" onclick="closeLightbox()" alt="fermer la lightbox"></i>
+        <div class="lightbox-content">
+        </div>
+        <i class="fa-solid fa-chevron-right" aria-label="image suivante"></i>
+      </div>
+    </div>
     <main id="main" aria-hidden="false" role="main">
       <section class="photograph-header">
         <button class="open-modal contact_button" onclick="displayContactModal()" aria-label="Formulaire de contact">Contactez-moi</button>
       </section>
-      <div class="tri-par">
+      <!-- <div class="filter">
         <p>Trier par</p>
+        <select name="sort" id="sort" class="sort-by" aria-label="Trier par"> 
+          <option value="likes">Popularité</option>
+          <option value="date">Date</option>
+          <option value="titre">Titre</option>
+        </select>
+      </div> -->
+      <div id="sort-menu" class="sort-by">
+        <p>Trier par</p>
+        <div class="sort-content">
+          <div class="sort-selection">
+            <button id="sort-button">Titre</button>
+            <span class="sort-icon" role="button" tabindex="0">&#9660;</span>
+          </div>
+          <div class="sort-menu" hidden>
+            <button class="sort-option">Titre</button>
+            <button class="sort-option">Popularité</button>
+            <button class="sort-option">Date</button>
+        </div>
+      </div>
       </div>
       <ul class="photograph-medias">
       </ul>
@@ -51,15 +79,6 @@
         </form>
 			</div>
 		</div>
-    <div class="lightbox-overlay" id="lightbox-container" aria-hidden="true" role="img">
-      <div class="lightbox">
-        <i class="fa-solid fa-chevron-left" aria-label="image précédente"></i>
-        <i class="fa-solid fa-xmark close-lightbox" onclick="closeLightbox()" alt="fermer la lightbox"></i>
-        <div class="lightbox-content">
-        </div>
-        <i class="fa-solid fa-chevron-right" aria-label="image suivante"></i>
-      </div>
-    </div>
     <script src="scripts/factories/photographersProfiles.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/pages/medias.js"></script>

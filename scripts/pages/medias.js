@@ -136,7 +136,7 @@ async function controlLikesPhotos(likeButton) {
   }
 }
 
-async function clickLikesPhotos() {
+function clickLikesPhotos() {
   // console.log('addLikes() called');
 
   const likeButtons = document.querySelectorAll('.fa-heart');
@@ -145,10 +145,15 @@ async function clickLikesPhotos() {
   likeButtons.forEach((likeButton) => {
     likeButton.addEventListener('click', () => controlLikesPhotos(likeButton));
     // console.log('likeButton:', likeButton);
+    likeButton.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      controlLikesPhotos(likeButton);
+    }
+    });    
   });
 }
 
-async function updateLikesDisplay(delta) {
+function updateLikesDisplay(delta) {
   const likesNumber = document.querySelector('.likes-number');
   let totalLikes = parseInt(likesNumber.textContent, 10); // Récupère la valeur actuelle
 
@@ -162,3 +167,30 @@ init();
 displayLikes();
 
 displayPrices();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownIcon = document.querySelector('.sort-icon');
+  const sortOptions = document.querySelector('.sort-menu');
+
+  // Toggle the display of the sortOptions
+  dropdownIcon.addEventListener('click', () => {
+    const isHidden = sortOptions.hidden;
+    sortOptions.hidden = !isHidden;
+  });
+
+  // Hide the sortOptions when clicking outside
+  document.addEventListener('click', (event) => {
+    if (!event.target.matches('.sort-icon') && !event.target.matches('#sort-button')) {
+      sortOptions.hidden = true;
+    }
+  });
+
+  // Update button text and hide options on selection
+  document.querySelectorAll('.sort-option').forEach(option => {
+    option.addEventListener('click', function () {
+      document.getElementById('sort-button').textContent = this.textContent;
+      sortOptions.hidden = true;
+    });
+  });
+});
+
