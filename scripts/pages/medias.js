@@ -168,29 +168,70 @@ displayLikes();
 
 displayPrices();
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   const dropdownIcon = document.querySelector('.sort-icon');
+//   const sortOptions = document.querySelector('.sort-menu');
+
+//   // Toggle the display of the sortOptions
+//   dropdownIcon.addEventListener('click', () => {
+//     const isHidden = sortOptions.hidden;
+//     sortOptions.hidden = !isHidden;
+//   });
+
+//   // Hide the sortOptions when clicking outside
+//   document.addEventListener('click', (event) => {
+//     if (!event.target.matches('.sort-icon') && !event.target.matches('#sort-button')) {
+//       sortOptions.hidden = true;
+//     }
+
+//   });
+
+//   // Update button text and hide options on selection
+//   document.querySelectorAll('.sort-option').forEach(option => {
+//     option.addEventListener('click', function () {
+//       document.getElementById('sort-button').textContent = this.textContent;
+//       sortOptions.hidden = true;
+//     });
+//   });
+// });
+
+
+function updateSortMenuVisibility() {
+  const sortButtonText = document.getElementById('sort-button').textContent.trim();
+
+  document.querySelectorAll('.sort-option').forEach(option => {
+    if (option.textContent.trim() === sortButtonText) {
+      option.style.display = 'none';
+    } else {
+      option.style.display = 'block';
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const dropdownIcon = document.querySelector('.sort-icon');
   const sortOptions = document.querySelector('.sort-menu');
 
-  // Toggle the display of the sortOptions
   dropdownIcon.addEventListener('click', () => {
     const isHidden = sortOptions.hidden;
     sortOptions.hidden = !isHidden;
+    updateSortMenuVisibility(); 
+
   });
 
-  // Hide the sortOptions when clicking outside
   document.addEventListener('click', (event) => {
     if (!event.target.matches('.sort-icon') && !event.target.matches('#sort-button')) {
       sortOptions.hidden = true;
     }
   });
 
-  // Update button text and hide options on selection
   document.querySelectorAll('.sort-option').forEach(option => {
     option.addEventListener('click', function () {
-      document.getElementById('sort-button').textContent = this.textContent;
+      document.getElementById('sort-button').textContent = this.textContent.trim();
       sortOptions.hidden = true;
+      updateSortMenuVisibility(); 
     });
   });
-});
 
+  updateSortMenuVisibility();
+});
