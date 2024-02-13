@@ -4,6 +4,9 @@ const lightboxModal = document.querySelector(".lightbox-content");
 const lightboxContainer = document.getElementById("lightbox-container");
 const leftChevron = document.querySelector('.fa-chevron-left');
 const rightChevron = document.querySelector('.fa-chevron-right');
+const closingIcon = document.querySelector('.close-lightbox');
+
+closingIcon.setAttribute('tabindex', '0');
 
 let mediaItems = [];
 let currentIndex = 0; 
@@ -50,6 +53,10 @@ function displayLightbox(source, type, title) {
     } else {
         console.error("Invalid media type or source");
     }
+
+    maintainFocusWithinModal();
+    setupCloseModalOnEscape();
+    setupCloseModalOnEnterForIcon();
 }
 
 /**
@@ -60,7 +67,24 @@ function displayLightbox(source, type, title) {
  */
 function closeLightbox() {
     console.log("closeLightbox() called");
-    lightboxContainer.style.display = "none";
+    lightboxContainer.style.display = "none";;
+    deactivateFocusTrap();
+}
+
+function setupCloseModalOnEscape() {
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+}
+
+function setupCloseModalOnEnterForIcon() {
+    closingIcon.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            closeLightbox();
+        }
+    });
 }
 
 function addMediaItem(source, type, title) {
@@ -133,3 +157,26 @@ function setChevrons () {
 }
 
 setChevrons();
+
+function maintainFocusWithinModal() {
+    // Define the modal and its focusable elements
+    const modal = document.querySelector('#lightbox-container'); // Replace '#myModal' with your modal's ID
+    const focusableElementsString = '.fa-chevron-left, .fa-chevron-right, .close-lightbox[tabindex]:not([tabindex="-1"])';
+    let focusableElements = modal.querySelectorAll(focusableElementsString);
+
+    document.addEventListener('focus', function (event) {
+        if (modal.contains(event.target)) {
+            // If focus is within modal, do nothing
+        } else {
+            // If focus moved outside modal, redirect it back to the modal
+            event.stopPropagation();
+            focusableElements[0].focus();
+        }
+    }, true); // Use capture phase to ensure the check happens before focus is set
+}
+
+function deactivateFocusTrap() {
+    // Remove the focus event listener when the modal is closed or not needed
+    document.removeEventListener('focus', maintainFocusWithinModal, true);
+}
+

@@ -445,17 +445,6 @@ textarea {
     }
 }
 
-/* .sort-option {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    /* i {
-        display : none;
- 
-} */
-
 .sort-menu button:last-child {
     border-radius: 0 0 5px 5px;
 }
