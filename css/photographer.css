@@ -396,17 +396,22 @@ textarea {
 
 .sort-menu {
     position: absolute;
+    margin-top: -3px;
     top: 100%;
     left: 0;
     z-index: 1;
     width: 100%;
-    border-radius: 5px;
+    border-top: #901C1C 4px solid;
+    border-radius: 0 0 5px 5px;
+    background: #901C1C;
 }
 
 .sort-option {
     width: 100%;
+    height: 45px;
     display: block;
-    padding: 10px;
+    padding-left: 20px;
+    /* padding: 10px; */
     border : none;
     background-color: #901C1C;
     color: #fff;
@@ -424,9 +429,10 @@ textarea {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    border-radius: 5px 5px 0 0;
+    /* border-radius: ; */
     width: 102px;
-    background: #901C1C;
+    /* border-bottom: #901C1C 4px solid; */
+    
 }
 
 .sort-content {
@@ -435,21 +441,32 @@ textarea {
     flex-direction: column;
     align-items: center;
     margin-left: 20px;
-    border-radius: 0 0 5px 5px;
+    border-radius: 5px;
+    background: #901C1C;
 }
 
-.divider {
+.divider,
+.divider-2 {
     background-color: #901C1C;
 
-    span {
-        display: block;
-        width: 85%;
-        height: 1px;
-        margin : auto;
-        background-color: #fff;
-    }
 }
 
-.sort-menu button:last-child {
+.divider-2 {
+    position : absolute;
+    margin-top: 45px;
+    z-index: 1000;
+}
+
+.line {
+    display: block;
+    width: 110px;
+    height: 1px;
+    margin: auto;
+    margin-left: 5px;
+    background-color: #fff;
+}
+
+.sort-menu button {
     border-radius: 0 0 5px 5px;
 }
+

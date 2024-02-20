@@ -84,7 +84,7 @@ function keepFocusWithinModal() {
             // If focus moved outside modal, redirect it back to the modal
             event.stopPropagation();
             focusableElements[0].focus();
-            console.log('event.stopPropagation() called');
+            // console.log('event.stopPropagation() called');
             // console.log('focusableElements[0].focus() called');	            
         }
     }, true); // Use capture phase to ensure the check happens before focus is set
