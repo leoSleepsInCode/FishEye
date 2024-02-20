@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr"></html>
+  <head>
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" >
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" 
+    rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53bcb96c81.js" crossorigin="anonymous"></script>
+    <title>Fisheye - photographe</title>
+  </head>
+  <body class="photographer">
+    <header>
+      <a href="index.html">
+        <img src="assets/logo.png" class="logo-2" alt ="Fisheye Home page"/>
+      </a>
+    </header>
+    <div class="lightbox-overlay" id="lightbox-container" aria-hidden="true" role="img">
+      <div class="lightbox">
+        <i class="fa-solid fa-chevron-left" aria-label="image précédente"></i>
+        <i class="fa-solid fa-xmark close-lightbox" onclick="closeLightbox()" alt="fermer la lightbox"></i>
+        <div class="lightbox-content">
+        </div>
+        <i class="fa-solid fa-chevron-right" aria-label="image suivante"></i>
+      </div>
+    </div>
+    <main id="main" aria-hidden="false" role="main">
+      <section class="photograph-header">
+        <button class="open-modal contact_button" onclick="displayContactModal()" aria-label="Formulaire de contact">Contactez-moi</button>
+      </section>
+      <div id="sort-menu" class="sort-by">
+        <p>Trier par</p>
+        <div class="sort-content">
+          <div class="sort-selection">
+            <button id="sort-button">Titre</button>
+            <i class="fa-solid fa-chevron-up sort-icon" tabindex="0"></i>
+          </div>
+          <div class="sort-menu" hidden>
+            <div class="divider">
+              <span class="line"></span>
+            </div>
+            <div class="divider-2">
+              <span class="line"></span>
+            </div>
+            <button class="sort-option">
+              Titre
+            </button>
+            <button class="sort-option">
+              Popularité
+            </button>
+            <button class="sort-option">
+              Date
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="photograph-medias">
+      </ul>
+      <div class="display-box">
+      </div>
+    </main>
+    <div class="modal-overlay" id="contact_modal" aria-hidden="true" role="dialog">
+			<div class="modal">
+				<header>
+          <h2>Contactez-moi</h2>
+          <h3 class="modal-names"></h3>
+          <img src="assets/close.svg" onclick="closeContactModal()" class="close-modal" alt ="close modal"/>
+        </header>
+				<form>
+          <div role="group" aria-label="Coordonnées">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" required />
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div role="group" aria-label="Message">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button class="send-button" aria-label="Cliquez pour envoyer">Envoyer</button>
+        </form>
+			</div>
+		</div>
+    <script src="scripts/factories/photographersProfiles.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/pages/medias.js"></script>
+    <script src="scripts/utils/contactModal.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
+  </body>
+</html>
