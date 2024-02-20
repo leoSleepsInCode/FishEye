@@ -77,7 +77,8 @@ a {
     line-height: normal;
 }
 
-.contact_button {
+.contact_button,
+.send-button {
     order : 2;
     align-self: center; 
     font-size: 20px;
@@ -90,6 +91,10 @@ a {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.send-button {
+    align-self: flex-start;
 }
 
 .open-modal:hover {

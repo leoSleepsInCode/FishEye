@@ -160,7 +160,7 @@ setChevrons();
 
 function maintainFocusWithinModal() {
     // Define the modal and its focusable elements
-    const modal = document.querySelector('#lightbox-container'); // Replace '#myModal' with your modal's ID
+    const modal = document.querySelector('#lightbox-container'); 
     const focusableElementsString = '.fa-chevron-left, .fa-chevron-right, .close-lightbox[tabindex]:not([tabindex="-1"])';
     let focusableElements = modal.querySelectorAll(focusableElementsString);
 
