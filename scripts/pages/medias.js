@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!event.target.matches('.sort-icon') && !event.target.matches('#sort-button')) {
       sortOptions.hidden = true;
     }
+    document.querySelector('.sort-icon').classList.toggle('rotate');
   });
 
   document.addEventListener('keydown', event => {
