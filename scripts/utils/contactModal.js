@@ -68,8 +68,15 @@ document.querySelector('.contact_button').addEventListener('click', displayNames
 
 document.querySelector('.send-button').addEventListener('click', (event) => {
   event.preventDefault();
-  console.log('Send button clicked');
+  const firstName = document.getElementById('prenom').value;
+  const name = document.getElementById('nom').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  
+  console.log(`First Name: ${firstName}, Name: ${name}, Email: ${email}, Message: ${message}`);
 });
+
+
 
 function keepFocusWithinModal() {
     // Define the modal and its focusable elements
