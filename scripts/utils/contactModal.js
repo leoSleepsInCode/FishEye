@@ -6,6 +6,12 @@ const closingButton = document.querySelector('.close-modal');
 
 closingButton.setAttribute('tabindex', '0');
 
+/**
+ * Display the contact modal and set up event listeners.
+ *
+ * @param {} - No parameters
+ * @return {} - No return value
+ */
 function displayContactModal() {
     console.log("displayModal() called");
     const modal = document.getElementById("contact_modal");
@@ -15,6 +21,10 @@ function displayContactModal() {
     closeModalOnEnterForSvg();
 }
 
+/**
+ * Closes the contact modal by setting its display style to "none" and removing focus trap.
+ *
+ */
 function closeContactModal() {
     console.log("closeModal() called");
     const modal = document.getElementById("contact_modal");
@@ -22,6 +32,12 @@ function closeContactModal() {
     removeFocusTrap();
 }
 
+/**
+ * Listens for the 'Escape' key press and closes the contact modal if detected.
+ *
+ * @param {event} event - The keyboard event object
+ * @return {void} 
+ */
 function closeModalOnEscape() {
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
@@ -30,6 +46,10 @@ function closeModalOnEscape() {
     });
 }
 
+/**
+ * Listens for keydown events on the closing button and closes the contact modal when the 'Enter' key is pressed.
+ *
+ */
 function closeModalOnEnterForSvg() {
     closingButton.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
@@ -38,6 +58,11 @@ function closeModalOnEnterForSvg() {
     });
 }
 
+/**
+ * Asynchronously displays the names of photographers based on the URL parameter.
+ *
+ * @return {Object} The matching photographer object.
+ */
 async function displayNames() {
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -64,6 +89,33 @@ async function displayNames() {
 
 }
 
+/**
+ * Keep the focus within the modal to prevent it from moving outside.
+ * @param {type} event - the focus event object
+ * @return {void} 
+*/
+function keepFocusWithinModal() {
+    const contactModal = document.querySelector('#contact_modal');  
+    const allFocusableElements = '.send-button, #prenom, #nom, #email, #message, .close-modal[tabindex]:not([tabindex="-1"])';
+    let focusableElements = contactModal.querySelectorAll(allFocusableElements);
+    
+    document.addEventListener('focus', function (event) {
+        if (contactModal.contains(event.target)) {
+        } else {
+            event.stopPropagation();
+            focusableElements[0].focus();     
+        }
+    }, true); 
+}
+
+/**
+ * Remove the focus event listener when the modal is closed or not needed.
+*/
+function removeFocusTrap() {
+    // Remove the focus event listener when the modal is closed or not needed
+    document.removeEventListener('focus', keepFocusWithinModal, true);
+}
+
 document.querySelector('.contact_button').addEventListener('click', displayNames);
 
 document.querySelector('.send-button').addEventListener('click', (event) => {
@@ -76,28 +128,4 @@ document.querySelector('.send-button').addEventListener('click', (event) => {
   console.log(`First Name: ${firstName}, Name: ${name}, Email: ${email}, Message: ${message}`);
 });
 
-
-
-function keepFocusWithinModal() {
-    // Define the modal and its focusable elements
-    const contactModal = document.querySelector('#contact_modal');  
-    const focusableElementsString = 'button, input, textarea, .close-modal[tabindex]:not([tabindex="-1"])';
-    let focusableElements = contactModal.querySelectorAll(focusableElementsString);
-
-    document.addEventListener('focus', function (event) {
-        if (contactModal.contains(event.target)) {
-            // If focus is within modal, do nothing
-        } else {
-            // If focus moved outside modal, redirect it back to the modal
-            event.stopPropagation();
-            focusableElements[0].focus();
-            // console.log('event.stopPropagation() called');
-            // console.log('focusableElements[0].focus() called');	            
-        }
-    }, true); // Use capture phase to ensure the check happens before focus is set
-}
-
-function removeFocusTrap() {
-    // Remove the focus event listener when the modal is closed or not needed
-    document.removeEventListener('focus', keepFocusWithinModal, true);
-}
+ 

@@ -71,6 +71,12 @@ function closeLightbox() {
     deactivateFocusTrap();
 }
 
+/**
+ * Sets up the functionality to close a modal when the Escape key is pressed.
+ *
+ * @param {object} event - The keyboard event object.
+ * @return {void} 
+ */
 function setupCloseModalOnEscape() {
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
@@ -79,6 +85,10 @@ function setupCloseModalOnEscape() {
     });
 }
 
+/**
+ * Sets up the event listener to close the modal when the Enter key is pressed on the closing icon.
+ *
+ */
 function setupCloseModalOnEnterForIcon() {
     closingIcon.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
@@ -87,6 +97,14 @@ function setupCloseModalOnEnterForIcon() {
     });
 }
 
+/**
+ * Adds a media item to the mediaItems array.
+ *
+ * @param {type} source - the source of the media item
+ * @param {type} type - the type of the media item
+ * @param {type} title - the title of the media item
+ * @return {type} undefined
+ */
 function addMediaItem(source, type, title) {
     // console.log("addMediaItem() called with source:", source, "and type:", type, "and title:", title);
     mediaItems.push({ source, type, title });
@@ -137,6 +155,9 @@ function showPreviousMedia() {
 }
 
 
+/**
+ * Sets event listeners for left and right chevrons and sets their tabindex.
+ */
 function setChevrons () {
     leftChevron.addEventListener('click', showPreviousMedia);
     leftChevron.addEventListener('keydown', function (event) {
@@ -158,6 +179,12 @@ function setChevrons () {
 
 setChevrons();
 
+/**
+ * Function to maintain focus within a modal.
+ *
+ * @param {event} event - The event object
+ * @return {undefined} 
+ */
 function maintainFocusWithinModal() {
     // Define the modal and its focusable elements
     const modal = document.querySelector('#lightbox-container'); 
@@ -175,6 +202,12 @@ function maintainFocusWithinModal() {
     }, true); // Use capture phase to ensure the check happens before focus is set
 }
 
+/**
+ * Remove the focus event listener when the modal is closed or not needed
+ *
+ * @param {Event} event - The event to be removed
+ * @return {void} 
+ */
 function deactivateFocusTrap() {
     // Remove the focus event listener when the modal is closed or not needed
     document.removeEventListener('focus', maintainFocusWithinModal, true);

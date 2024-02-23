@@ -46,6 +46,11 @@ async function init() {
     displayPhotographerMedias(media);
 }
 
+/**
+ * Asynchronously retrieves the matching photographer based on the id parameter in the URL.
+ *
+ * @return {Object} The matching photographer object
+ */
 async function getMatchingPhotographer() {
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -65,6 +70,11 @@ async function getMatchingPhotographer() {
     }
 }
 
+/**
+ * Asynchronously displays the likes for the matching photographer's media content, if the matching photographer is found.
+ *
+ * @return {Promise<void>} 
+ */
 async function displayLikes() {
   console.log('displayLikes() called');
   try {
@@ -88,6 +98,11 @@ async function displayLikes() {
   }
 }
 
+/**
+ * Asynchronously displays the prices of photographers based on matching photographer.
+ *
+ * @return {Promise<void>} 
+ */
 async function displayPrices() {
   console.log('displayPrices() called');
   try {
@@ -110,6 +125,12 @@ async function displayPrices() {
   }
 }
 
+/**
+ * Asynchronously controls the liking of photos.
+ *
+ * @param {Element} likeButton - The like button element
+ * @return {Promise} A promise representing the asynchronous operation
+ */
 async function controlLikesPhotos(likeButton) {
   let likesElement = likeButton.parentElement.querySelector('.likes');
   let numberOfLikes = parseInt(likesElement.textContent, 10);
@@ -136,6 +157,10 @@ async function controlLikesPhotos(likeButton) {
   }
 }
 
+/**
+ * Clicks on like buttons for photos and adds event listeners for click and keydown events.
+ *
+ */
 function clickLikesPhotos() {
   // console.log('addLikes() called');
 
@@ -153,6 +178,12 @@ function clickLikesPhotos() {
   });
 }
 
+/**
+ * Updates the display of likes based on the given delta.
+ *
+ * @param {number} delta - the change in likes
+ * @return {void} 
+ */
 function updateLikesDisplay(delta) {
   const likesNumber = document.querySelector('.likes-number');
   let totalLikes = parseInt(likesNumber.textContent, 10); // Récupère la valeur actuelle
@@ -168,6 +199,12 @@ displayLikes();
 
 displayPrices();
 
+/**
+ * Updates the visibility of the sort menu options based on the sort button text.
+ *
+ * @param {void} 
+ * @return {void} 
+ */
 function updateSortMenuVisibility() {
   const sortButtonText = document.getElementById('sort-button').textContent.trim();
 
@@ -292,9 +329,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Initial render
   let photos = []; // Define photos variable
   if (photographerId) {
-    photos = filterByPhotographerId(mediaData, photographerId); // Update photos with filtered data
-    renderPhotos(photos); // Render only photos for the specified photographer ID
-  } else {
+    photos = filterByPhotographerId(mediaData, photographerId); 
+    renderPhotos(photos); 
     console.error('Photographer ID not found in URL parameters.');
   }
 
@@ -306,13 +342,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       switch (sortCriterion) {
         case 'Titre':
-          sortedPhotos = sortByTitle(photos); // Use filtered photos for sorting
+          sortedPhotos = sortByTitle(photos); 
           break;
         case 'Popularité':
-          sortedPhotos = sortByLikes(photos); // Use filtered photos for sorting
+          sortedPhotos = sortByLikes(photos); 
           break;
         case 'Date':
-          sortedPhotos = sortByDate(photos); // Use filtered photos for sorting
+          sortedPhotos = sortByDate(photos); 
           break;
         default:
           break;
