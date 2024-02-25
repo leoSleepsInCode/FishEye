@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use strict";
 
 const lightboxModal = document.querySelector(".lightbox-content");
@@ -67,7 +68,7 @@ function displayLightbox(source, type, title) {
  */
 function closeLightbox() {
     console.log("closeLightbox() called");
-    lightboxContainer.style.display = "none";;
+    lightboxContainer.style.display = "none";
     deactivateFocusTrap();
 }
 

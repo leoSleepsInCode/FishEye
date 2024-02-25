@@ -1,5 +1,7 @@
 "use strict";
 
+/* global  displayLightbox, addMediaItem, clickLikesPhotos,*/
+
 const contentBox = document.createElement('div');
 contentBox.classList.add('display-content');
 
@@ -14,6 +16,7 @@ contentBox.classList.add('display-content');
  * @param {string} data.portrait - The filename of the photographer's portrait image.
  * @return {Object} - An object containing the name, picture URL, and the DOM element for the header.
  */
+// eslint-disable-next-line no-unused-vars
 function profileHeader(data) {
     const {name, city, country, tagline, portrait} = data;
 
@@ -59,6 +62,7 @@ function profileHeader(data) {
  * @param {number} data.likes - The number of likes for the media.
  * @return {object} - An object containing the ID, photographer ID, title, PICTURE, VIDEO, likes, and getMainMediasDOM function.
  */
+// eslint-disable-next-line no-unused-vars
 function profileMedias(data) {
     const { id, photographerId, title, image, video, likes } = data;
 
@@ -135,6 +139,7 @@ function profileMedias(data) {
  * @param {number} likes - The number of likes.
  * @return {HTMLElement} The DOM element representing the likes.
  */
+// eslint-disable-next-line no-unused-vars
 function getLikesDOM( likes ) {
     
     const likesElement = document.createElement('b');
@@ -159,6 +164,7 @@ function getLikesDOM( likes ) {
  * @param {number} price - The price to be displayed.
  * @return {Element} The content box element with the added price element.
  */
+// eslint-disable-next-line no-unused-vars
 function getPriceDOM( price ) {
     
     const priceElement = document.createElement('p');

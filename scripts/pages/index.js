@@ -1,5 +1,7 @@
 "use strict";
     
+/* global photographersGallery*/
+
 /**
  * Retrieves the list of photographers from the server.
  *

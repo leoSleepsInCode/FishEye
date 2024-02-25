@@ -1,5 +1,7 @@
 "use strict";
 
+/* global profileHeader */
+
 /**
  * Fetches a photographer by their ID from the photographers.json data file.
  *

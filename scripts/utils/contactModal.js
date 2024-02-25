@@ -12,6 +12,7 @@ closingButton.setAttribute('tabindex', '0');
  * @param {} - No parameters
  * @return {} - No return value
  */
+// eslint-disable-next-line no-unused-vars
 function displayContactModal() {
     console.log("displayModal() called");
     const modal = document.getElementById("contact_modal");
@@ -100,6 +101,7 @@ function keepFocusWithinModal() {
     let focusableElements = contactModal.querySelectorAll(allFocusableElements);
     
     document.addEventListener('focus', function (event) {
+        // eslint-disable-next-line no-empty
         if (contactModal.contains(event.target)) {
         } else {
             event.stopPropagation();
