@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (photographerId) {
     photos = filterByPhotographerId(mediaData, photographerId); 
     renderPhotos(photos); 
-    console.error('Photographer ID not found in URL parameters.');
+    // console.error('Photographer ID not found in URL parameters.');
   }
 
   // Event listener for sort buttons
