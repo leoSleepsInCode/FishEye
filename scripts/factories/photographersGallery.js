@@ -13,6 +13,7 @@
  * @param {string} data.portrait - The filename of the photographer's portrait image.
  * @return {object} - An object containing the photographer's name, the filename of the photographer's portrait image, and a function to get the user card DOM element.
  */
+// eslint-disable-next-line no-unused-vars
 function photographersGallery(data) {
     const { id, name, city, country, tagline, price, portrait } = data;
 

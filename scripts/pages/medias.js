@@ -1,5 +1,7 @@
 "use strict";
 
+/* global profileMedias, getLikesDOM, getPriceDOM */
+
 
 const displayBox = document.querySelector('.display-box');
 /**
@@ -161,6 +163,7 @@ async function controlLikesPhotos(likeButton) {
  * Clicks on like buttons for photos and adds event listeners for click and keydown events.
  *
  */
+// eslint-disable-next-line no-unused-vars
 function clickLikesPhotos() {
   // console.log('addLikes() called');
 
